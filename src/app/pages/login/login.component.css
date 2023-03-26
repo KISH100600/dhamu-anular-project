@@ -1,0 +1,13 @@
+ .parent {
+     /* background: #ff8585; */
+     width: 100%;
+     background-image: url(http://13.126.235.219:3000/static/media/Bg2.7d102e5d3fe6b9aad0d6.jpg);
+     height: 100%;
+     background-repeat: no-repeat;
+     background-size: cover;
+     -webkit-box-align: center;
+     align-items: center;
+     -webkit-box-pack: center;
+     justify-content: center;
+     /* background: "url(http://13.126.235.219:3000/static/media/Bg2.7d102e5d3fe6b9aad0d6.jpg)"; */
+ }

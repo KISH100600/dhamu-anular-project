@@ -1,0 +1,16 @@
+<form (ngSubmit)="createUser()">
+  <input
+    type="text"
+    placeholder="activity  name"
+    [formControl]="activityName"
+  />
+  <input type="text" placeholder="description" [formControl]="description" />
+  <input type="text" placeholder="priority" [formControl]="priority" />
+  <input type="file" placeholder="image" (change)="handleChange($event)" />
+  <input type="submit" value="Create activity" />
+</form>
+<h1>{{ activityName.value }}</h1>
+<!-- <h1>{{ description }}</h1> -->
+<div *ngFor="let item of users">
+  <app-card> </app-card>
+</div>

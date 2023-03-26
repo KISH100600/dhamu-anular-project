@@ -1,30 +1,24 @@
-import { errorstatus } from './controller/common';
 import { Component } from '@angular/core';
-import { FormControl, FormBuilder } from '@angular/forms';
-import { Route, Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoginService } from './services/auth/login.service';
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-})
-export class AppComponent {
-  title = 'testing';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/auth/login.service';
 
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+})
+export class LoginComponent {
+  title = 'testing';
   constructor(
     private authservice: LoginService,
     private formBuilder: FormBuilder,
     public router: Router
   ) {}
-  public eror = errorstatus;
   checkoutForm = this.formBuilder.group({
     username: '',
     password: '',
   });
-  ngDoCheck() {
-    console.log(this.eror);
-  }
 
   Login() {
     this.authservice
@@ -36,6 +30,11 @@ export class AppComponent {
         (a: any) => {
           console.log(a);
           alert('Logged in!');
+          const token = a.headers.get('X-Auth-Token');
+          // this.router.navigate(['viewCart']);
+          sessionStorage.setItem('token', token);
+          localStorage.setItem('token', token);
+          // this.coockie.set('name', token);
           this.router.navigate(['/dashboard']);
         },
         (e: any) => {
